@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
+using UnityEditor;
 
 [CreateAssetMenu(fileName = "New Inventory", menuName = "Inventory System/Inventory")]
 public class InventoryObject : ScriptableObject, ISerializationCallbackReceiver
@@ -10,8 +11,18 @@ public class InventoryObject : ScriptableObject, ISerializationCallbackReceiver
 
 
     public string savePath;
-    public ItemDatabaseObject database;
+    private ItemDatabaseObject database;
     public List<InventorySlot> Container = new List<InventorySlot>();
+
+    private void OnEnable() 
+    {
+        // because this line of code is using Unity.Editor, which means the build won't work, so 
+#if UNITY_EDITOR
+        database = (ItemDatabaseObject)AssetDatabase.LoadAssetAtPath("Assets/Resources/Database.asset", typeof(ItemDatabaseObject));
+#else
+        database = Resources.Load<ItemDatabaseObject>("Database"); // this requires you have to put the file in a 'Resources' folder
+#endif
+    }
 
     public void AddItem(ItemObject _item, int _amount)
     {
