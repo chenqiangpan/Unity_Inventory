@@ -13,6 +13,7 @@ public class Player : MonoBehaviour
         var item = other.GetComponent<Item>();
         if(item)
         {
+            Debug.Log("Item found");
             inventory.AddItem(item.item,1);
             Destroy(other.gameObject);
         }
@@ -22,4 +23,6 @@ public class Player : MonoBehaviour
     private void OnApplicationQuit() {
         inventory.Container.Clear();
     }
+
+
 }
