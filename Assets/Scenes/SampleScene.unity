@@ -1310,11 +1310,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventory: {fileID: 11400000, guid: df52c46c49ac1cd41b5afdd0a82ef991, type: 2}
-  X_START: -50
+  X_START: -100
   Y_START: 187
-  X_SPACE_BETWEEN_ITEMS: 32
+  X_SPACE_BETWEEN_ITEMS: 64
   NUMBER_OF_COLUNMS: 4
-  Y_SPACE_BETWEEN_ITEMS: 32
+  Y_SPACE_BETWEEN_ITEMS: 64
 --- !u!1001 &1039479158
 PrefabInstance:
   m_ObjectHideFlags: 0
